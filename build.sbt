@@ -35,11 +35,16 @@ scalacOptions ++= Seq(
 
 scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits", "-no-link-warnings")
 
+val slf4jVersion = "1.7.21"
+
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.0",
+  "org.slf4j" % "slf4j-api" % slf4jVersion % Test,
+  "org.slf4j" % "jcl-over-slf4j" % slf4jVersion % Test,
+  "org.slf4j" % "log4j-over-slf4j" % slf4jVersion % Test,
   "log4j" % "log4j" % "1.2.17" % Log4jTest,
   "commons-logging" % "commons-logging" % "1.2" % Log4jTest,
-  "org.slf4j" % "slf4j-log4j12" % "1.7.21" % Log4jTest)
+  "org.slf4j" % "slf4j-log4j12" % slf4jVersion % Log4jTest)
 
 licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
 
