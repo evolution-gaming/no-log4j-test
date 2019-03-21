@@ -1,16 +1,16 @@
-# by default Travis uses JDK 8u31, which is much too old for Scala 2.12 (versions before 8u102 have issues - https://issues.scala-lang.org/browse/SI-9828)
 dist: trusty
 sudo: false
 
 language: scala
 
 scala:
-  - 2.11.11
-  - 2.12.3
+  - 2.12.8
 
-jdk: oraclejdk8
+jdk:
+  - oraclejdk8
+  - openjdk11
 
-script: sbt ++$TRAVIS_SCALA_VERSION clean coverage test log4j:test
+script: sbt ++$TRAVIS_SCALA_VERSION clean coverage test
 
 after_success: sbt ++$TRAVIS_SCALA_VERSION coverageReport coveralls
 
@@ -19,4 +19,13 @@ notifications:
     on_success: never
     on_failure: always
     rooms:
-      secure: "ZkG0Ru1NcqJdGuf6gesro4xhAwU/zYCrU3FUOksYMtsdhd+SbVwLNXLlcBXZRQmsPKOPfC6McEyO6jc5Y05SXBkTNBzOw8Fe/bxEbBKYnxLQY7QrimfMstDu5Rz7xksNGDGiVxwXR+OtF3ixS6hzCR1rrHDrYmFQ/lPMGU+kyTJ54Vu81CBrhNbbuhswMx2N+QFLQDv090o8PgXa6YJJRo4k2qReQcZ6h7cCMVgfqzuJda/kmShl6HnOU4RjsIT5TLYWobLFdTJzPQdjtpASdwJyu2LAjF72BeO5jlNNp5eufrkRCaFbSt+NEYXV63DQqSb0QrPmur/n8M4RgumReDxNK3wPqrL4TanLsMcmTMEzVt2/GKJvt1HEila9HdLiZBhhDjV5NaekEbMmxh9azwUN2xpP6wlHbe3TkZsnly1r5V62hKePXP61Gatlp1HIXIGvfyLCDDyrvVzy1K+EELi3qDD865xgMJFB8BfRth6DUTzuc46Sqv/Iq03edp6VVUh9LUzrp4pU2BLsjMHU/aii+e5eoeqHLOzTphkZByg07z2zv9Jk27vgR1PO4G+LVV4l3RJVT8bU4mzV5ONX4k9Ss2UGaMQbvtao0hQGAo6XdRDyh3NfJVq/YG+vcDJZjOOsaUxlZRv2XWFpX6eiEu3sxYCz3kscmV0359HDeQ8="
+      secure: "SJKIK4dxBd3b5b1RcQ5TLpRknXYcBcMlW1NQmsca2gsRZqB3TanEGgqT7s/GzELQ+7/6L9P2EOm+uBXysLHifLUMPEB2Z3ytOZVGvVn/RF5eHzwsepzBM1hC1Iq42Nhl21AOruPs0rlo/eMLmWw/4hbcVA05V05SSRs0rDwGSOQMyLtJkjH8C9zd32RMuzEXFrE0xZAqRwvZ5y3TPwUTaTQ+wXMXUEtYVBCLc98EeQGfcN8EBUu9L1cVQ6ksaU5+JH1SyEcE6Weg9ah/cPIUpxwR1SNVz6I02rd47ZdFIg1XWUorNStEvIpbkHBZp6T9VM0Pd/POcAY1zCHalYxRfUdQhnNmXlRJIzxPPL6fhD7ixBbzNPP5SvvbVliLI+YYIZxVIhVz9fjI3NDBDxFNJMLFnSrSTojhBrkiA6fSS7ACQwtEVWrk3qFso+HYvLLEkYHtUhkC7IOu3ZFEcc6B5vs7wBQwZmlFzpqtxkmTQB7vksVnF7wO7jtfMJR7yYSnF2fLbQVkUfNdqGLfdUs3ViMDkWr225n8dOKs6kt8HXY++JT2AqGeGOEE0XxNz1ZyuZ0YX1Gx0XDXYWXSM9pCOxfg/mU536yenM9i1N/oTE+MHw76/IIW5h5Le19+J/WU4K+TMhmhvnCDqSXo3fPF11pGtwOOmf02GfvNVNpMCKI="
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt
+
+before_cache:
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
+  - find $HOME/.sbt        -name "*.lock"               -print -delete

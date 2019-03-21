@@ -1,8 +1,3 @@
-import com.typesafe.sbt.SbtScalariform
-import com.typesafe.sbt.SbtScalariform.ScalariformKeys
-
-import scalariform.formatter.preferences._
-
 name := "no-log4j-test"
 
 organization := "com.evolutiongaming"
@@ -17,9 +12,9 @@ organizationHomepage := Some(url("http://evolutiongaming.com"))
 
 bintrayOrganization := Some("evolutiongaming")
 
-scalaVersion := "2.12.3"
+scalaVersion := crossScalaVersions.value.head
 
-crossScalaVersions := Seq("2.11.11", "2.12.3")
+crossScalaVersions := Seq("2.12.8")
 
 releaseCrossBuild := true
 
@@ -37,10 +32,10 @@ scalacOptions ++= Seq(
 
 scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits", "-no-link-warnings")
 
-val slf4jVersion = "1.7.21"
+val slf4jVersion = "1.7.26"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.0",
+  "org.scalatest" %% "scalatest" % "3.0.7",
   "org.slf4j" % "slf4j-api" % slf4jVersion % Test,
   "org.slf4j" % "jcl-over-slf4j" % slf4jVersion % Test,
   "org.slf4j" % "log4j-over-slf4j" % slf4jVersion % Test,
@@ -55,10 +50,3 @@ lazy val Log4jTest = config("log4j") extend Test
 lazy val root = (project in file(".")).
   configs(Log4jTest).
   settings(inConfig(Log4jTest)(Defaults.testSettings): _*)
-
-SbtScalariform.scalariformSettings
-
-ScalariformKeys.preferences := ScalariformKeys.preferences.value
-  .setPreference(AlignParameters, true)
-  .setPreference(AlignSingleLineCaseStatements, true)
-  .setPreference(DoubleIndentClassDeclaration, true)
