@@ -14,34 +14,22 @@ bintrayOrganization := Some("evolutiongaming")
 
 scalaVersion := crossScalaVersions.value.head
 
-crossScalaVersions := Seq("2.12.8")
+crossScalaVersions := Seq("2.13.0", "2.12.9")
 
 releaseCrossBuild := true
 
-scalacOptions ++= Seq(
-  "-encoding", "UTF-8",
-  "-feature",
-  "-unchecked",
-  "-deprecation",
-  "-Xfatal-warnings",
-  "-Xlint",
-  "-Yno-adapted-args",
-  "-Ywarn-dead-code",
-  "-Ywarn-numeric-widen",
-  "-Xfuture")
-
 scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits", "-no-link-warnings")
 
-val slf4jVersion = "1.7.26"
+val slf4jVersion = "1.7.28"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.7",
-  "org.slf4j" % "slf4j-api" % slf4jVersion % Test,
-  "org.slf4j" % "jcl-over-slf4j" % slf4jVersion % Test,
-  "org.slf4j" % "log4j-over-slf4j" % slf4jVersion % Test,
-  "log4j" % "log4j" % "1.2.17" % Log4jTest,
-  "commons-logging" % "commons-logging" % "1.2" % Log4jTest,
-  "org.slf4j" % "slf4j-log4j12" % slf4jVersion % Log4jTest)
+  "org.scalatest"   %% "scalatest"        % "3.0.8",
+  "org.slf4j"        % "slf4j-api"        % slf4jVersion % Test,
+  "org.slf4j"        % "jcl-over-slf4j"   % slf4jVersion % Test,
+  "org.slf4j"        % "log4j-over-slf4j" % slf4jVersion % Test,
+  "org.slf4j"        % "slf4j-log4j12"    % slf4jVersion % Log4jTest,
+  "log4j"            % "log4j"            % "1.2.17"     % Log4jTest,
+  "commons-logging"  % "commons-logging"  % "1.2"        % Log4jTest)
 
 licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
 
