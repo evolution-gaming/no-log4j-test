@@ -19,6 +19,8 @@ publishTo := Some(Resolver.evolutionReleases)
 
 Compile / doc / scalacOptions ++= Seq("-groups", "-implicits", "-no-link-warnings")
 
+ThisBuild / versionScheme := Some("early-semver")
+
 val slf4jVersion = "1.7.32"
 
 libraryDependencies ++= Seq(
