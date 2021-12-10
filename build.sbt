@@ -32,6 +32,8 @@ libraryDependencies ++= Seq(
 
 licenses := Seq(("MIT", url("https://opensource.org/licenses/MIT")))
 
+releaseCrossBuild := true
+
 lazy val Log4jTest = config("log4j") extend Test
 
 lazy val root = (project in file(".")).
