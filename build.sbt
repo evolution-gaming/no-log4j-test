@@ -1,3 +1,4 @@
+import sbt.Resolver
 name := "no-log4j-test"
 
 organization := "com.evolutiongaming"
@@ -6,24 +7,22 @@ homepage := Some(new URL("http://github.com/evolution-gaming/no-log4j-test"))
 
 startYear := Some(2016)
 
-organizationName := "Evolution Gaming"
+organizationName := "Evolution"
 
-organizationHomepage := Some(url("http://evolutiongaming.com"))
-
-bintrayOrganization := Some("evolutiongaming")
+organizationHomepage := Some(url("http://evolution.com"))
 
 scalaVersion := crossScalaVersions.value.head
 
-crossScalaVersions := Seq("2.13.0", "2.12.9")
+crossScalaVersions := Seq("2.13.7", "2.12.15")
 
-releaseCrossBuild := true
+publishTo := Some(Resolver.evolutionReleases)
 
-scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits", "-no-link-warnings")
+Compile / doc / scalacOptions ++= Seq("-groups", "-implicits", "-no-link-warnings")
 
-val slf4jVersion = "1.7.28"
+val slf4jVersion = "1.7.32"
 
 libraryDependencies ++= Seq(
-  "org.scalatest"   %% "scalatest"        % "3.0.8",
+  "org.scalatest"   %% "scalatest"        % "3.0.9",
   "org.slf4j"        % "slf4j-api"        % slf4jVersion % Test,
   "org.slf4j"        % "jcl-over-slf4j"   % slf4jVersion % Test,
   "org.slf4j"        % "log4j-over-slf4j" % slf4jVersion % Test,
@@ -31,7 +30,7 @@ libraryDependencies ++= Seq(
   "log4j"            % "log4j"            % "1.2.17"     % Log4jTest,
   "commons-logging"  % "commons-logging"  % "1.2"        % Log4jTest)
 
-licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
+licenses := Seq(("MIT", url("https://opensource.org/licenses/MIT")))
 
 lazy val Log4jTest = config("log4j") extend Test
 
