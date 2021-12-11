@@ -14,7 +14,7 @@ Add dependency
 ```scala
 addSbtPlugin("com.evolution" % "sbt-artifactory-plugin" % "0.0.2")
 
-libraryDependencies += "com.evolutiongaming" %% "no-log4j-test" % "0.6.1" % Test
+libraryDependencies += "com.evolutiongaming" %% "no-log4j-test" % "0.6.2" % Test
 ```
 
 Add the test
