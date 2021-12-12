@@ -1,8 +1,9 @@
 package com.evolutiongaming.util
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-class Log4jTest extends FunSuite with Matchers {
+class Log4jTest extends AnyFunSuite with Matchers {
   for { (name, clazz) <- Log4jDeps() } {
     test(name) {
       getClass.getClassLoader.loadClass(clazz)

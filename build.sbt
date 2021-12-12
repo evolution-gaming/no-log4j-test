@@ -24,7 +24,7 @@ ThisBuild / versionScheme := Some("early-semver")
 val slf4jVersion = "1.7.32"
 
 libraryDependencies ++= Seq(
-  "org.scalatest"            %% "scalatest"        % "3.0.9",
+  "org.scalatest"            %% "scalatest"        % "3.2.10",
   "org.slf4j"                 % "slf4j-api"        % slf4jVersion % Test,
   "org.slf4j"                 % "jcl-over-slf4j"   % slf4jVersion % Test,
   "org.slf4j"                 % "log4j-over-slf4j" % slf4jVersion % Test,

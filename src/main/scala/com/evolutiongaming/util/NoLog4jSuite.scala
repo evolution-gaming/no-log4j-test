@@ -1,8 +1,9 @@
 package com.evolutiongaming.util
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-trait NoLog4jSuite extends FunSuite with Matchers {
+trait NoLog4jSuite extends AnyFunSuite with Matchers {
   for { (name, clazz) <- Log4jDeps() } {
     test(s"no $name") {
       the[ClassNotFoundException] thrownBy getClass.getClassLoader.loadClass(clazz)
