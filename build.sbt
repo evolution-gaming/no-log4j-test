@@ -3,13 +3,13 @@ name := "no-log4j-test"
 
 organization := "com.evolutiongaming"
 
-homepage := Some(new URL("http://github.com/evolution-gaming/no-log4j-test"))
+homepage := Some(url("https://github.com/evolution-gaming/no-log4j-test"))
 
 startYear := Some(2016)
 
 organizationName := "Evolution"
 
-organizationHomepage := Some(url("http://evolution.com"))
+organizationHomepage := Some(url("https://evolution.com"))
 
 scalaVersion := crossScalaVersions.value.head
 
@@ -44,3 +44,7 @@ lazy val root = (project in file("."))
   .settings(inConfig(Log4jTest)(Defaults.testSettings): _*)
 
 addCommandAlias("testAll", "test;log4j:test")
+
+//addCommandAlias("check", "all versionPolicyCheck Compile/doc")
+addCommandAlias("check", "show version")
+addCommandAlias("build", "+all compile test")
