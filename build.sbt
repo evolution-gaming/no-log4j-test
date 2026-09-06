@@ -28,10 +28,10 @@ libraryDependencies ++= Seq(
   "org.slf4j" % "slf4j-api" % slf4jVersion % Test,
   "org.slf4j" % "jcl-over-slf4j" % slf4jVersion % Test,
   "org.slf4j" % "log4j-over-slf4j" % slf4jVersion % Test,
-  "log4j" % "log4j" % "1.2.17" % Log4jTest,
-  "org.apache.logging.log4j" % "log4j-core" % "2.15.0" % Log4jTest,
+  "ch.qos.reload4j" % "reload4j" % "1.2.26" % Log4jTest,
+  "org.apache.logging.log4j" % "log4j-core" % "2.26.1" % Log4jTest,
   "commons-logging" % "commons-logging" % "1.2" % Log4jTest,
-  "org.slf4j" % "slf4j-log4j12" % slf4jVersion % Log4jTest,
+  "org.slf4j" % "slf4j-log4j12" % slf4jVersion % Log4jTest exclude ("log4j", "log4j"),
 )
 
 licenses := Seq(("MIT", url("https://opensource.org/licenses/MIT")))
